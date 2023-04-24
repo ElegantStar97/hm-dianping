@@ -26,4 +26,31 @@ class HmDianPingApplicationTests {
 
 		cacheClient.setWithLogicExpire(RedisConstants.CACHE_SHOP_KEY + 1L, shop, 10L, TimeUnit.SECONDS);
 	}
+	
+	@Test
+	void leetCodeII003() {
+		int n = 5;
+		int[] arr = new int[n+1];
+
+		int frequency = 0;
+		// 循环
+		for (int i = 0; i <= n; i++) {
+
+			int count = 0;
+			int j = i;
+			while (j != 0) {
+				count++;
+				// low bit算法
+				j = j & (j-1);
+				if (j != 0) {
+					count++;
+				}
+			}
+			arr[frequency] = count;
+			frequency++;
+		}
+
+		// 返回
+		System.out.println(arr);
+	}
 }
